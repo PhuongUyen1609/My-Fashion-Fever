@@ -1,0 +1,830 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #1a0b1a; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#game-container {
+    width: 1291px;
+    height: 800px;
+    position: relative; 
+    overflow: hidden; 
+    border: 2px solid #ff00ff;
+}
+
+/* ======================================= */
+/* === GIAO DIỆN MÀN HÌNH SPLASH === */
+/* ======================================= */
+
+.splash-screen {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg/bg_1.png'); 
+    background-size: cover;
+    background-position: center;
+}
+
+.play-button {
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    width: 80px;
+    height: 75px;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.play-button:hover {
+    transform: scale(1.1);
+}
+
+.play-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+/* ======================================= */
+/* === GIAO DIỆN MÀN HÌNH MENU === */
+/* ======================================= */
+
+.menu-screen {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg/bg_2.png'); 
+    background-size: cover;
+    background-position: center;
+    display: flex; 
+}
+
+.menu-column {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center; 
+}
+
+.left-column, .right-column {
+    flex: 2; 
+}
+
+.center-column {
+    flex: 8;
+}
+
+.left-column {
+    padding-top: 30px;
+    flex-direction: column; 
+    justify-content: flex-start;
+    gap: 15px; 
+
+    flex: 2;
+}
+
+.character-select {
+    width: 150px; 
+    border: 5px solid transparent; 
+    border-radius: 20px; 
+    overflow: hidden; 
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.character-select img {
+    width: 100%;
+    display: block; 
+}
+.character-select:hover {
+    transform: scale(1.05); 
+    border-color: rgba(255, 255, 255, 0.5);
+}
+.character-select.selected {
+    transform: scale(1.1);
+}
+
+.center-column {
+    flex-direction: column; 
+    align-items: center;
+    justify-content: flex-start; 
+    padding: 10px 0 40px 0; 
+    flex: 8;
+    gap: 80px;
+}
+
+.vicky-menu-title {
+    width: 50%;
+    max-width: 350px;
+}
+.vicky-menu-title img {
+    width: 100%;
+}
+
+.card-slider-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 20px;
+    
+}
+
+.menu-item {
+    flex-basis: 28%; 
+    max-width: 250px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+.menu-item img {
+    width: 100%;
+    height: auto; 
+    display: block;
+}
+.menu-item.active {
+    transform: scale(1.2); 
+    z-index: 10;
+}
+
+.deco-phone-img {
+    max-width: 100%; 
+    height: auto; 
+}
+@keyframes menuAppear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.menu-column.center-column {
+    z-index: 1;
+}
+
+.menu-column.right-column {
+    z-index: 10;
+}
+
+.menu-screen {
+  animation: menuAppear 2s ease-out forwards;
+}
+/* ======================================= */
+/* === GIAO DIỆN MÀN HÌNH DRESSING GAME === */
+/* ======================================= */
+
+.dressing-game-screen {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg/bg_2.png'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    position: relative;
+}
+
+.dressing-game-screen .center-column {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0px; 
+    padding: 0;
+    position: relative;
+}
+
+.dressing-game-screen .center-column::before {
+    content: '';
+    position: absolute;
+    width: 88%;
+    height: 65%;
+    top: -20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('../assets/images/bg/sub_bg.png');
+    background-size: 110% 110%;
+    background-position: center 5px;
+    background-repeat: no-repeat;
+    z-index: 1; 
+}
+
+.dressing-game-screen .center-column::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg/chat.png');
+    background-size: 110% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.6; 
+    z-index: 2; 
+}
+
+
+.game-area-background {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg/chat.png');
+    background-size: 110% 100%; 
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px 50px;
+    z-index: 1; 
+}
+
+.main-closet-frame {
+    /* background-image: url('../assets/images/bg/sub_bg.png'); */
+    background-size: 110% 110%; 
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-position-y: 5px;
+    width: 88%;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    position: relative;
+    top: -80px;
+    z-index: 5;
+}
+
+.closet-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    width: 99%;
+    height: 100%;
+    padding: 0;
+}
+
+.clothing-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+    height: 100%;
+    justify-content: center; 
+}
+
+.category-box {
+    position: relative;
+    width: 250px; 
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.category-box {
+    background-image: none;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    top: 15px; 
+    z-index: 10;
+}
+
+.tab-btn {
+    width: 110px;  
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent; 
+    background-repeat: no-repeat;
+    background-size: contain; 
+    background-image: url('../assets/images/button/tab_inactive.png');
+    font-size: 0; 
+}
+
+.tab-btn.active {
+    color: white;
+    text-decoration: underline;
+}
+
+.item-viewport {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 40px); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.item-viewport::before {
+    content: '';
+    position: absolute;
+    width: 200px;  
+    height: 200px; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; 
+    z-index: 1; 
+}
+
+#shirts-skirts-box .item-viewport::before {
+    background-image: url('../assets/images/bg/bgDress.png');
+}
+#dresses-trousers-box .item-viewport::before {
+    background-image: url('../assets/images/bg/bgShirt.png');
+}
+#shoes-accessories-box .item-viewport::before {
+    background-image: url('../assets/images/bg/bgShoe.png');
+}
+
+.item-display {
+    position: relative; 
+    z-index: 2;     
+}
+
+.prev-btn, .next-btn {
+    z-index: 3; 
+}
+
+.item-display {
+    max-width: 70%; 
+    max-height: 70%;
+    object-fit: contain;
+    cursor: grab;
+    position: relative;
+    top: -10px; 
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    width: 50px; 
+    height: 50px;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-size: 0;
+}
+
+.prev-btn { left: 5px; background-image: url('../assets/images/button/btnPreviously.png'); }
+.next-btn { right: 5px; background-image: url('../assets/images/button/btnNext.png'); }
+
+.character-display-area {
+    position: relative;
+    width: 150px; 
+    height: 100%; 
+    background-image: none; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.character-base { width: 70%; height: 100%; object-fit: contain; }
+
+.character-base { z-index: 1; }
+#worn-shoe      { z-index: 2; }
+#worn-trouser   { z-index: 3; } 
+#worn-skirt     { z-index: 4; }
+#worn-shirt     { z-index: 5; } 
+#worn-accessory { z-index: 6; } 
+#worn-dress     { z-index: 7; } 
+
+.worn-item {
+    position: absolute;
+    width: 80%;
+    height: 90%;
+    /* top bằng 46% thì nó bị lệch ;3 45,9 là đúng chuẩn r */
+    top: 45.9%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.worn-item[src=""],
+.worn-item[src="#"] {
+    visibility: hidden;
+}
+
+.vicky-chat-box {
+    width: 80%; 
+    height: 150px;
+    position: relative;
+    left: -7%;
+    top: -20px; 
+    background-image: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-top: 0px;
+    z-index: 6; 
+}
+
+.vicky-npc-image { 
+    height: 170%; 
+    align-self: flex-end; 
+    margin-right: 20px; 
+    position: relative;
+    top: 20px;
+}
+.chat-bubble { 
+    flex-grow: 1; 
+    text-align: left; 
+    padding: 20px 0;
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    color: #5d0f51; 
+    position: relative;
+    top: 5px; 
+}
+
+.bottom-toolbar {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: 97%; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action-button {
+    background-image: url('../assets/images/button/btn.png');
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    width: 170px;  
+    height: 170px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s;
+    background-color: transparent; 
+}
+
+.action-button:hover {
+    transform: scale(1.1);
+}
+
+.action-button img {
+    width: 60px;  
+    height: 60px; 
+
+    object-fit: contain;
+}
+
+.right-column {
+    padding-top: 75px;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center;
+}
+
+.side-menu-item { width: 80%; cursor: pointer; transition: transform 0.2s; opacity: 0.7; }
+.side-menu-item img { width: 100%; }
+.side-menu-item:hover { transform: scale(1.05); opacity: 1; }
+.side-menu-item.active { transform: scale(1.1); opacity: 1; border-radius: 20px;}
+
+/* ======================================= */
+/* === KHU VỰC CHỌN ITEM (PIXEL PERFECT) === */
+/* ======================================= */
+
+.clothing-panel {
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    width: 230px; 
+}
+
+.category-box {
+    position: relative;
+}
+
+.item-gallery-wrapper {
+    position: relative;
+    transform: scale(0.65);
+    transform-origin: center;
+}
+
+#shirts-skirts-box .item-gallery-wrapper { width: 354px; height: 320px; }
+#shoes-accessories-box .item-gallery-wrapper { width: 354px; height: 192px; }
+#dresses-trousers-box .item-gallery-wrapper { width: 354px; height: 573px; }
+
+
+.gallery-prev-btn, .gallery-next-btn {
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+.gallery-prev-btn img, .gallery-next-btn img { width: 100%; }
+
+#shirts-skirts-box .gallery-prev-btn { top: 129px; left: 0; }
+#shirts-skirts-box .gallery-next-btn { top: 129px; right: 0; }
+
+#shoes-accessories-box .gallery-prev-btn { top: 83px; left: 0; }
+#shoes-accessories-box .gallery-next-btn { top: 83px; right: 0; }
+
+#dresses-trousers-box .gallery-prev-btn { top: 278px; left: 0; }
+#dresses-trousers-box .gallery-next-btn { top: 278px; right: 0; }
+
+
+.gallery-showcase {
+    position: absolute;
+}
+#shirts-skirts-box .gallery-showcase { width: 256px; height: 320px; top: 0; left: 50px; }
+#shoes-accessories-box .gallery-showcase { width: 256px; height: 192px; top: 0; left: 50px; }
+#dresses-trousers-box .gallery-showcase { width: 320px; height: 573px; top: 0; left: 30px; }
+
+
+.gallery-bg, .gallery-hanger, .gallery-clothing, .gallery-tabs {
+    position: absolute;
+}
+
+.gallery-tabs {
+    top: 0;
+    left: 0;
+    width: 196px;
+    height: 57px;
+    z-index: 3;
+}
+.gallery-tab-img {
+    position: absolute;
+    top: 0;
+    width: 98px;
+    height: 57px;
+    cursor: pointer;
+}
+.gallery-tabs img:nth-child(1) { left: 0; }
+.gallery-tabs img:nth-child(2) { left: 98px; }
+
+
+.gallery-bg {
+    z-index: 1;
+}
+
+#shirts-skirts-box .gallery-bg { top: 29px; left: 0; width: 250px; height: 291px; }
+#shoes-accessories-box .gallery-bg { top: 30px; left: 0; width: 250px; height: 167px; }
+#dresses-trousers-box .gallery-bg { top: 30px; left: 0; width: 293px; height: 543px; }
+
+.gallery-clothing {
+    top: 65%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    max-width: 230px;
+    max-height: 300px;
+    object-fit: contain;
+    cursor: grab;
+    z-index: 2;
+}
+
+#shirts-skirts-box .gallery-clothing { max-width: 230px; max-height: 300px; }
+#shoes-accessories-box .gallery-clothing { max-width: 200px; max-height: 150px; top: 60%; }
+#dresses-trousers-box .gallery-clothing { max-width: 270px; max-height: 400px; top: 50%; }
+
+/* ======================================= */
+/* === GIAO DIỆN MÀN HÌNH GIỚI THIỆU === */
+/* ======================================= */
+
+.introduction-screen {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg/bg_2.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-column {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.left-column,
+.right-column {
+    flex: 2;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 75px;
+}
+
+.center-column {
+    flex: 6;
+}
+
+.introduction-screen .center-column {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+}
+
+.introduction-screen .center-column::before {
+    content: '';
+    position: absolute;
+    width: 88%;
+    height: 65%;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('../assets/images/bg/bg_3.png');
+    background-size: 110% 110%;
+    background-position: center 5px;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.introduction-screen .center-column::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg/chat.png');
+    background-size: 110% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    z-index: 2;
+}
+
+
+.introduction-main-content {
+    flex-grow: 1;
+    width: 91%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+    margin-bottom: 35px; 
+}
+
+.introduction-main-content video {
+    width: 95%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 20px; 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); 
+}
+
+.introduction-screen .vicky-chat-box {
+    width: 80%;
+    height: 150px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 6;
+    background: none;
+    flex-shrink: 0; 
+}
+
+.introduction-screen .vicky-npc-image {
+    height: 170%;
+    align-self: flex-end;
+    margin-right: 20px;
+    position: relative;
+    top: 20px;
+}
+
+.introduction-screen .chat-bubble {
+    flex-grow: 1;
+    text-align: left;
+    padding: 20px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #5d0f51;
+    position: relative;
+    top: 5px;
+}
+
+.character-select,
+.side-menu-item {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.character-select img,
+.side-menu-item img {
+    width: 100%;
+    height: auto;
+}
+
+.character-select:not(.selected),
+.side-menu-item:not(.active) {
+    opacity: 0.7; 
+}
+
+.character-select:hover,
+.side-menu-item:hover {
+    transform: scale(1.05); 
+    opacity: 1;
+}
+
+.left-column .character-select {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.left-column .character-select:nth-child(1):not(.selected):not(:hover),
+.left-column .character-select:nth-child(2):not(.selected):not(:hover),
+.left-column .character-select:nth-child(3):not(.selected):not(:hover) {
+    filter: grayscale(80%);
+}
+
+.left-column .character-select:hover,
+.left-column .character-select.selected {
+    transform: scale(1.08);
+}
+
+.character-select[data-character="blonde"]:hover,
+.character-select[data-character="blonde"].selected {
+    filter: drop-shadow(0 0 12px rgba(255, 223, 0, 0.8));
+}
+
+.character-select[data-character="short"]:hover,
+.character-select[data-character="short"].selected {
+    filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.8));
+}
+
+.character-select[data-character="curly"]:hover,
+.character-select[data-character="curly"].selected {
+    filter: drop-shadow(0 0 12px rgba(220, 180, 255, 0.9));
+}
+
+.character-select[data-character="blonde"]:hover,
+.character-select[data-character="blonde"].selected {
+    filter: drop-shadow(0 0 12px rgba(255, 223, 0, 0.8));
+}
+
+.character-select[data-character="short"]:hover,
+.character-select[data-character="short"].selected {
+    filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.8));
+}
+
+.character-select[data-character="curly"]:hover,
+.character-select[data-character="curly"].selected {
+    filter: drop-shadow(0 0 12px rgba(220, 180, 255, 0.9));
+}
+
+.gallery-tab-img.active-tab {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+}
+.gallery-tab-img {
+    transition: all 0.2s ease;
+}
+
+.gallery-clothing[src*="/Skirt/"] {
+    top: 35%;
+}
+
+.hidden {
+    display: none !important;
+}

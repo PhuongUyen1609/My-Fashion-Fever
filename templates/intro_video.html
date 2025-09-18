@@ -1,0 +1,74 @@
+<style>
+    .intro-video-screen {
+        width: 100%;
+        height: 100%;
+        background: black;
+        position: relative;
+        transition: opacity 0.5s ease-in-out; 
+    }
+    #game-intro-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+.skip-button {
+  position: absolute;
+  z-index: 10;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 35px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  border: none;
+  background: rgba(203, 56, 159, 0.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.4),
+    0 8px 32px rgba(0, 0, 0, 0.15);              
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.skip-button:hover {
+  background: rgba(203, 56, 159, 0.25); 
+  box-shadow: 
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.6),
+    0 8px 32px rgba(0, 0, 0, 0.15);
+  transform: translateX(-50%) scale(1.05);
+}
+
+.skip-button::before {
+  content: '';
+  position: absolute;
+  left: var(--mouse-x);
+  top: var(--mouse-y);
+  width: 200px;
+  height: 200px;
+  background-image: radial-gradient(
+    circle,
+    rgba(203, 56, 159, 0.6) 0%, 
+    rgba(203, 56, 159, 0) 60%
+  );
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.skip-button:hover::before {
+  opacity: 1;
+}
+</style>
+
+<div class="intro-video-screen">
+    <video id="game-intro-video" src="assets/videos/hi.mp4" autoplay muted></video>
+    <button class="skip-button">Skip</button>
+</div>

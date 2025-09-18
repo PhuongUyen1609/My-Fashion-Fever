@@ -1,0 +1,326 @@
+/* ======================================= */
+/* === GIAO DIỆN MÀN HÌNH PHOTO BOOTH === */
+/* (Cấu trúc đồng bộ với Dressing Game) */
+/* ======================================= */
+
+.photobooth-screen {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg/bg_2.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    position: relative;
+}
+
+.menu-column {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.left-column,
+.right-column {
+    flex: 2; 
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 40px;
+}
+
+.center-column {
+    flex: 6; 
+}
+
+.photobooth-screen .center-column {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 60px;
+    position: relative;
+    z-index: 3;
+}
+
+.photobooth-screen .center-column::before {
+    content: '';
+    position: absolute;
+    width: 88%;
+    height: 65%;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('../assets/images/bg/bg_3.png');
+    background-size: 110% 110%;
+    background-position: center 5px;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.photobooth-screen .center-column::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg/chat.png');
+    background-size: 110% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+.photobooth-main-content {
+    display: flex;
+    width: 90%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    z-index: 5;
+    top: -40px;
+}
+
+.photo-area {
+    flex: 4.5;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-frame {
+    width: 100%;
+    flex-grow: 1;
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-frame::after {
+    content: ''; 
+    position: absolute; 
+    top: 15%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/Card/PhotoBoothCamera.png');
+    background-size: 100% 80%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.canvas-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden; 
+}
+
+#webcam-feed, #photo-canvas {
+    position: absolute;
+    top: 42px;
+    left: 35px;
+    width: 80%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#photo-canvas {
+    width: 80%;
+    height: 65%;
+    top: 28%;
+    left: 35.5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    cursor: grab;
+}
+
+.download-btn {
+    width: 170px;
+    height: 62px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+}
+.download-btn img {
+    width: 100%;
+}
+
+.sticker-area {
+    flex: 3.5;
+    height: 100%;
+    position: relative;
+}
+
+.photobooth-screen .vicky-chat-box {
+    width: 80%;
+    height: 150px;
+    position: relative;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    z-index: 6;
+    background: none;
+}
+
+.photobooth-screen .vicky-npc-image {
+    height: 170%;
+    align-self: flex-end;
+    margin-right: 20px;
+    position: relative;
+    top: -5px;
+}
+
+.photobooth-screen .chat-bubble {
+    flex-grow: 1;
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #5d0f51;
+    position: relative;
+    top: -15px;
+}
+
+/* ================================== */
+/* === KHU VỰC STICKER (BÊN PHẢI) === */
+/* ================================== */
+
+.sticker-area {
+    display: flex;
+    flex-direction: column; 
+    height: 75%; 
+    width: 35%;
+    box-sizing: border-box; 
+}
+
+.sticker-tabs {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    flex-shrink: 0; 
+    padding-left: 20px; 
+}
+
+.sticker-tab-img {
+    height: 30px; 
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+    filter: brightness(0.8); 
+    margin-right: -10px;
+}
+
+.sticker-tab-img:hover {
+    filter: brightness(1);
+}
+
+.sticker-tab-img.active {
+    transform: scale(1.05);
+    filter: brightness(1) drop-shadow(0 0 8px #fff); 
+}
+
+.sticker-panel {
+    min-height: 0;
+    flex-grow: 1;
+    overflow-x: hidden; 
+    box-sizing: border-box; 
+    background-image: url('../assets/images/Card/sticker.png');
+    background-size: 110% 100%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px 0px; 
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+}
+
+.sticker-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 55px);
+    justify-content: center; 
+    align-items: center;
+    align-self: center;
+    gap: 10px; 
+}
+.sticker-item {
+    aspect-ratio: 1 / 1; 
+    background-image: url('../assets/images/Card/Tray.png');
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab; 
+    transition: transform 0.2s ease;
+}
+
+.sticker-item:hover {
+    transform: scale(1.1);
+}
+
+.sticker-item img {
+    max-width: 65%;
+    max-height: 65%;
+    object-fit: contain;
+    pointer-events: none; 
+}
+
+.sticker-panel::-webkit-scrollbar {
+    width: 8px;
+}
+.sticker-panel::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+.sticker-panel::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+.sticker-panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* ================================ */
+/* === NÚT CHỤP ẢNH VÀ CANVAS ẢNH === */
+
+.shutter-btn {
+    position: absolute;
+    bottom: 10px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px; 
+    height: 100px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10; 
+    transition: transform 0.2s ease;
+}
+
+.shutter-btn img {
+    width: 80%;
+    height: 80%;
+}
+
+#photo-canvas {
+    background-color: rgba(255, 255, 255, 0.85); 
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.sticker-item.dragging {
+    opacity: 0.5;
+    transform: scale(1.2);
+}

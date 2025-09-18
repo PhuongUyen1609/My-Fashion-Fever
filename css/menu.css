@@ -1,0 +1,102 @@
+
+/* ======================================= */
+/* === GIAO DIỆN MÀN HÌNH MENU === */
+/* ======================================= */
+
+.menu-screen {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg/bg_2.png'); 
+    background-size: cover;
+    background-position: center;
+    display: flex; 
+}
+
+.menu-column {
+    height: 100%;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+.left-column, .right-column {
+    flex: 2; 
+}
+
+.center-column {
+    flex: 8;
+}
+
+.left-column {
+    padding-top: 30px;
+    flex-direction: column; 
+    gap: 15px; 
+    flex: 2;
+}
+
+.character-select {
+    width: 150px; 
+    border: 5px solid transparent; 
+    border-radius: 20px; 
+    overflow: hidden; 
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.character-select img {
+    width: 100%;
+    display: block; 
+}
+.character-select:hover {
+    transform: scale(1.05); 
+    border-color: rgba(255, 255, 255, 0.5);
+}
+.character-select.selected {
+    transform: scale(1.1);
+}
+
+.center-column {
+    flex-direction: column; 
+    align-items: center;
+    justify-content: flex-start; 
+    padding: 10px 0 40px 0; 
+    flex: 8;
+    gap: 80px;
+}
+
+.vicky-menu-title {
+    width: 50%;
+    max-width: 350px;
+}
+.vicky-menu-title img {
+    width: 100%;
+}
+
+.card-slider-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 20px;
+    
+}
+
+.menu-item {
+    flex-basis: 28%; 
+    max-width: 250px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+.menu-item img {
+    width: 100%;
+    height: auto; 
+    display: block;
+}
+.menu-item.active {
+    transform: scale(1.2); 
+    z-index: 10;
+}
+
+.deco-phone-img {
+    max-width: 100%; 
+    height: auto; 
+}
