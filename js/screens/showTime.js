@@ -1,5 +1,6 @@
 import { state } from '../modules/gameState.js';
 import { updateCharacterDisplay, addCharacterSelectionEvents, addCommonNavigationEvents } from '../modules/ui.js';
+import { playSFX } from '../modules/audio.js';
 
 function renderCurrentOutfit() {
     const outfit = state.currentOutfit;
@@ -44,4 +45,6 @@ export function initShowTimeScreen() {
     renderCurrentOutfit();
     addCharacterSelectionEvents();
     addCommonNavigationEvents();
+
+    playSFX('Showtime sound.mp3'); 
 }
