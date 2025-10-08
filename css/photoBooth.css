@@ -19,13 +19,13 @@
     align-items: center;
 }
 
-.left-column,
+/* .left-column,
 .right-column {
     flex: 2; 
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 40px;
-}
+} */
 
 .center-column {
     flex: 6; 
@@ -180,17 +180,17 @@
     align-self: flex-end;
     margin-right: 20px;
     position: relative;
-    top: -5px;
+    top: -10px;
 }
 
 .photobooth-screen .chat-bubble {
     flex-grow: 1;
     text-align: left;
     font-size: 1.2rem;
-    font-weight: bold;
+    font-weight: normal;
     color: #5d0f51;
     position: relative;
-    top: -15px;
+    top: -30px;
 }
 
 /* ================================== */
@@ -211,6 +211,7 @@
     align-items: center;
     flex-shrink: 0; 
     padding-left: 20px; 
+    gap: 10px;
 }
 
 .sticker-tab-img {
@@ -228,6 +229,7 @@
 .sticker-tab-img.active {
     transform: scale(1.05);
     filter: brightness(1) drop-shadow(0 0 8px #fff); 
+    filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.7));
 }
 
 .sticker-panel {
@@ -292,9 +294,6 @@
     background: rgba(255, 255, 255, 0.8);
 }
 
-/* ================================ */
-/* === NÚT CHỤP ẢNH VÀ CANVAS ẢNH === */
-
 .shutter-btn {
     position: absolute;
     bottom: 10px; 
@@ -323,4 +322,24 @@
 .sticker-item.dragging {
     opacity: 0.5;
     transform: scale(1.2);
+}
+
+.reset-btn {
+    position: absolute;
+    bottom: 60px; 
+    right: 35px;  
+    width: 50px;  
+    height: 50px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 20; 
+    
+    transition: transform 0.2s ease;
+}
+
+.reset-btn img {
+    width: 70%;
+    height: 70%;
 }
