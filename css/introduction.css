@@ -1,0 +1,106 @@
+.introduction-screen {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg/bg_2.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.introduction-screen .left-column,
+.introduction-screen .right-column {
+    flex: 1.5; 
+}
+.introduction-screen .center-column {
+    flex: 5; 
+}
+.introduction-screen .left-column,
+.introduction-screen .right-column {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 50px;
+    gap: 20px;
+}
+
+.introduction-screen .center-column {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+}
+
+.introduction-screen .center-column::before {
+    content: '';
+    position: absolute;
+    width: 95%;
+    height: 65%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('../assets/images/bg/bg_3.png');
+    background-size: 100% 100%;
+    background-position: center top;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.introduction-screen .center-column::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 120%;
+    height: 100%;
+    background-image: url('../assets/images/bg/chat.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+.introduction-screen .introduction-main-content {
+    width: 95%; 
+    height: 65%; 
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+    margin-bottom: 300px; 
+}
+
+.introduction-screen .introduction-main-content video {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 20px; 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); 
+}
+
+.introduction-screen .vicky-chat-box {
+    width: 100%;
+    height: 200px;
+    position: absolute; 
+    top: 69%;
+    left: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 6;
+    flex-shrink: 0; 
+}
+
+.introduction-screen .vicky-npc-image {
+    height: 120%;
+    margin-right: 20px;
+}
+
+.introduction-screen .chat-bubble {
+    width: 60%;
+    padding-bottom: 70px;
+}

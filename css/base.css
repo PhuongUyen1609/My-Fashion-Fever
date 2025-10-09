@@ -1,0 +1,229 @@
+@font-face {
+  font-family: 'Alagard'; 
+  src: url('../assets/font/Alagard.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #1a0b1a; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#game-container {
+    width: 1291px;
+    height: 800px;
+    position: relative; 
+    overflow: hidden; 
+    border: 2px solid #ff00ff;
+}
+
+.menu-column {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.left-column, .right-column {
+    flex: 1.5;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 50px;
+    gap: 20px;
+}
+.left-column .character-select {
+    width: 150px; 
+}
+
+.right-column .side-menu-item {
+    width: 75%;
+    max-width: 250px;
+}
+
+.center-column {
+    flex: 5;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+}
+
+.character-select {
+    width: 180px; 
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.character-select img { width: 100%; display: block; }
+.character-select:hover { transform: scale(1.05); }
+.character-select.selected { transform: scale(1.1); }
+
+.side-menu-item {
+    width: 80%;
+    max-width: 250px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    opacity: 0.7;
+}
+.side-menu-item img { width: 100%; }
+.side-menu-item:hover { transform: scale(1.05); opacity: 1; }
+.side-menu-item.active { transform: scale(1.1); opacity: 1; }
+
+.bottom-toolbar {
+    position: absolute;
+    bottom: 20px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: 97%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.action-button {
+    background-image: url('../assets/images/button/btn.png');
+    background-size: 100% 100%;
+    border: none; cursor: pointer;
+    width: 170px; height: 170px;
+    display: flex; justify-content: center; align-items: center;
+    transition: transform 0.2s;
+    background-color: transparent;
+}
+.action-button:hover { transform: scale(1.1); }
+.action-button img { width: 60px; height: 60px; object-fit: contain; }
+
+.vicky-chat-box {
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    bottom: 0;
+    display: flex; align-items: flex-end; justify-content: center;
+    z-index: 6;
+}
+.vicky-npc-image { height: 120%; margin-right: 20px; }
+.chat-bubble { width: 60%; padding-bottom: 40px; }
+.chat-bubble p {
+    font-family: 'Alagard', sans-serif;
+    font-size: 1.6rem; color: #fff;
+    font-weight: normal; line-height: 1.4;
+    text-shadow: 2px 2px 0 #5d0f51;
+}
+
+.modal-overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none; 
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #e8649fff, #f8a5c2);
+    padding: 30px 40px;
+    border-radius: 20px;
+    border: 4px solid #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.5);
+    text-align: center;
+    color: #5d0f51; 
+    max-width: 400px;
+    
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay:not(.hidden) .modal-content {
+    transform: scale(1);
+}
+
+.modal-content p {
+    font-family: 'Alagard', sans-serif; 
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+.modal-button {
+    font-family: 'Alagard', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    background: linear-gradient(180deg, #ff79c6, #ff55b3);
+    border: 2px solid #fff;
+    border-radius: 15px;
+    padding: 10px 40px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.modal-button:hover {
+    background: linear-gradient(180deg, #ff8fd1, #ff6bc4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.character-select[data-character="blonde"]:hover,
+.character-select[data-character="blonde"].selected {
+    filter: drop-shadow(0 0 12px rgba(255, 223, 0, 0.8));
+}
+.character-select[data-character="blonde"],
+.character-select[data-character="short"] {
+    position: relative; 
+    transition: filter 0.3s ease; 
+}
+
+.character-select[data-character="blonde"]:not(.selected),
+.character-select[data-character="short"]:not(.selected) {
+    filter: grayscale(100%);
+}
+
+.character-select[data-character="blonde"]:not(.selected)::after,
+.character-select[data-character="short"]:not(.selected)::after {
+    content: ''; 
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-image: url('../assets/images/button/lock_icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10; 
+    opacity: 0.8; 
+    transition: opacity 0.3s ease;
+}
+
+.character-select[data-character="blonde"]:not(.selected):hover,
+.character-select[data-character="short"]:not(.selected):hover {
+    filter: grayscale(50%);
+}
+
+.character-select[data-character="blonde"]:not(.selected):hover::after,
+.character-select[data-character="short"]:not(.selected):hover::after {
+    opacity: 1;
+}
+
+.hidden { display: none !important; }
