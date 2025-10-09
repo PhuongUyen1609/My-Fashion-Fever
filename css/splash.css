@@ -1,0 +1,30 @@
+.splash-screen {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg/bg_1.png'); 
+    background-size: cover;
+    background-position: center;
+}
+
+.play-button {
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+    width: 80px;
+    height: 75px;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.play-button:hover {
+    transform: scale(1.1);
+}
+
+.play-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}

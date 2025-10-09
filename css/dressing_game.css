@@ -1,0 +1,359 @@
+.dressing-game-screen {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/bg/bg_2.png'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.dressing-game-screen .left-column,
+.dressing-game-screen .right-column {
+    flex: 1.5;
+}
+
+.dressing-game-screen .center-column {
+    flex: 5;
+}
+
+.dressing-game-screen .left-column,
+.dressing-game-screen .right-column,
+.dressing-game-screen .center-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.dressing-game-screen .left-column,
+.dressing-game-screen .right-column {
+    justify-content: flex-start;
+    padding-top: 50px;
+    gap: 20px;
+}
+
+.dressing-game-screen .center-column {
+    justify-content: flex-start;
+    z-index: 3;
+}
+
+.dressing-game-screen .center-column::before {
+    content: '';
+    position: absolute;
+    width: 96%;
+    height: 64%; 
+    top: 0; 
+    left: 50%;
+    transform: translateX(-50%); 
+    z-index: 1;
+    background-image: url('../assets/images/bg/sub_bg.png');
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.dressing-game-screen .center-column::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 120%;
+    height: 100%;
+    background-image: url('../assets/images/bg/chat.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+    opacity: calc(1);
+}
+
+
+
+.dressing-game-screen .vicky-chat-box {
+    width: 100%;
+    height: 200px;
+    position: absolute; 
+    bottom: 45px;
+    left: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 6; 
+    flex-shrink: 0; 
+}
+
+.dressing-game-screen .vicky-npc-image { 
+    height: 120%; 
+    margin-right: 20px; 
+}
+.dressing-game-screen .chat-bubble { 
+    width: 60%; 
+    padding-bottom: 40px; 
+}
+
+.main-closet-frame {
+    position: absolute; 
+    width: 96%;         
+    height: 64%;       
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.closet-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    width: 100%;
+    height: 100%;
+    gap: 15px;
+}
+
+.character-display-area {
+    flex: 0 0 220px;
+    height: 75%; 
+    position: relative; 
+    display: flex; justify-content: center; align-items: flex-end;
+}
+.character-base { 
+    width: 100%; height: 100%; 
+    object-fit: contain; 
+}
+
+.clothing-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 50px; 
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+.item-gallery-wrapper {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform: scale(0.85); 
+    transform-origin: center center; 
+    
+    margin: -20px 0; 
+}
+.gallery-showcase {
+    width: 90%; max-width: 280px; position: relative;
+}
+.gallery-showcase .gallery-bg { width: 100%; display: block; transform: scale(0.8); }
+.gallery-clothing { 
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; 
+    cursor: grab; 
+    object-fit: contain;
+}
+
+#shirts-skirts-box .gallery-clothing {
+    max-width: 180px;
+    max-height: 250px;
+    transition: all 0.2s step-start; 
+}
+
+#shirts-skirts-box .gallery-clothing[src*="/shirt/"] {
+    top: 66%; 
+}
+
+#shirts-skirts-box .gallery-clothing[src*="/Skirt/"] {
+    top: 40%;
+}
+
+#shoes-accessories-box .gallery-clothing {
+    max-width: 150px;
+    max-height: 120px;
+}
+
+#dresses-trousers-box .gallery-clothing {
+    max-width: 160px;
+    max-height: 360px;
+    left: 54%;
+}
+#dresses-trousers-box .gallery-clothing[src*="/trousers/"] {
+    position: absolute;
+    top: 55%;
+    left: 54%;
+}
+
+
+#dresses-trousers-box .item-gallery-wrapper {
+    transform: scale(0.8); 
+    margin-top: 50px; 
+}
+
+.gallery-tabs { 
+    position: absolute; z-index: 3;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%); display: flex;
+}
+
+#shirts-skirts-box .gallery-tabs{
+    top: 3px; left: 45%;
+}
+
+#shoes-accessories-box .gallery-tabs{
+    top: -8px; left: 45%;
+}
+
+#dresses-trousers-box .gallery-tabs{
+    top: 20px; left: 45%;
+}
+
+.gallery-tab-img { 
+    height: 45px; cursor: pointer; transition: 0.2s ease; opacity: 0.8;
+}
+.gallery-tab-img:hover, .gallery-tab-img.active-tab {
+    opacity: 1; transform: scale(1.1);
+}
+.gallery-prev-btn, .gallery-next-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 30px; height: 30px;
+    background: none; border: none; padding: 0;
+    cursor: pointer; z-index: 10;
+}
+.gallery-prev-btn { left: -15px; }
+.gallery-next-btn { right: -15px; }
+.gallery-prev-btn img, .gallery-next-btn img { width: 100%; }
+.show-time-button {
+    width: 80%;
+    max-width: 200px;
+    cursor: pointer;
+    left: 30px;
+    transition: transform 0.2s ease-in-out;
+    margin-top: -80px; 
+    position: relative;
+    z-index: 20; 
+}
+.show-time-button:hover { transform: scale(1.08); }
+
+.dressing-game-screen .vicky-chat-box {
+    width: 100%; height: 200px;
+    position: absolute; bottom: 6%; left: 0;
+    display: flex; align-items: flex-end; justify-content: center;
+    z-index: 6; 
+}
+.dressing-game-screen .vicky-npc-image { height: 120%; margin-right: 20px; }
+.dressing-game-screen .chat-bubble { width: 60%; padding-bottom: 30px; }
+
+.worn-item { 
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+    pointer-events: none; 
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0; 
+}
+.worn-item[src=""], .worn-item[src="#"] { 
+    visibility: hidden; 
+}
+
+.character-display-area .character-base { z-index: 10; }
+.character-display-area #worn-shoe      { z-index: 20; }
+.character-display-area #worn-trouser   { z-index: 30; } 
+.character-display-area #worn-skirt     { z-index: 31; } 
+.character-display-area #worn-shirt     { z-index: 40; } 
+.character-display-area #worn-dress     { z-index: 50; } 
+.character-display-area #worn-necklace  { z-index: 60; } 
+.character-display-area #worn-earring   { z-index: 70; } 
+
+#worn-shoe {
+    top: 42%;      
+    width: 55%;
+    left: 49%;
+}
+
+#worn-trouser {
+    top: 20%;
+    left: 52.5%;      
+    width: 56%;    
+}
+
+#worn-trouser {
+    top: 20%;
+    left: 52.5%;     
+    width: 56%;    
+}
+
+#worn-trouser[src*="trouser6.png"] {
+    top: 8%;
+    left: 50%;
+    width: 48%;
+}
+
+#worn-trouser[src*="trouser7.png"] {
+    top: 5%;
+    left: 50.5%;
+    width: 50%;
+}
+
+
+#worn-skirt {
+    top: -6%;      
+    width: 55.5%;    
+}
+
+#worn-shirt {
+    top: -5%;      
+    width: 55%;    
+}
+
+#worn-dress {
+    left: 49.5%;
+    top: -5.5%;      
+    width: 54%;
+}
+
+#worn-earring {
+    top: -33%;      
+    width: 42%;
+}
+
+#worn-necklace {
+    top: -22.5%;     
+    width: 16%;
+}
+#worn-necklace[src*="necklace1.png"] {
+    top: -24%;
+    width: 18%;
+}
+
+#hair-zone { 
+    position: absolute; 
+    top: -5%; left: 50%;    
+    transform: translateX(-50%);
+    width: 40%; height: 25%; 
+    z-index: 100;
+}
+#worn-hairclip {
+    position: absolute;
+    top: 0; left: 0;
+    width: 30%; height: 70%;
+    transform: translate(0px, 0px);
+    z-index: 101;
+}
+.worn-item.movable-active { 
+    pointer-events: auto; 
+    cursor: grab; 
+}
+.worn-item.movable-active:active { 
+    cursor: grabbing; 
+}
